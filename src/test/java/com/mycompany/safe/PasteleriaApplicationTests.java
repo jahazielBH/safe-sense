@@ -1,4 +1,4 @@
-package com.mycompany.Pasteleria;
+package com.mycompany.safe;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

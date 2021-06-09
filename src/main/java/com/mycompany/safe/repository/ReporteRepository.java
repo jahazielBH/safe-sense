@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.Pasteleria.repository;
+package com.mycompany.safe.repository;
 
-import com.mycompany.Pasteleria.model.Reporte;
+import com.mycompany.safe.model.Reporte;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

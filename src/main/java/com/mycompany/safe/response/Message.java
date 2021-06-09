@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.Pasteleria.response;
+package com.mycompany.safe.response;
+
+import com.mycompany.safe.model.Usuario;
 
 /**
  *
@@ -14,11 +16,13 @@ public class Message {
     private String message;
     private Boolean isSuccess;
     private Integer code;
+    private Usuario usuario;
 
-    public Message(String message, Boolean isSuccess, Integer code) {
+    public Message(String message, Boolean isSuccess, Integer code, Usuario usuario) {
         this.message = message;
         this.isSuccess = isSuccess;
         this.code = code;
+        this.usuario = usuario;
     }
 
     public String getMessage() {
@@ -45,4 +49,12 @@ public class Message {
         this.code = code;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
 }
