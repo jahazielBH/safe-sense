@@ -72,11 +72,37 @@ public class ReporteController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-    @GetMapping("/reporte/{id}")
-    public ResponseEntity<Reporte> getReporteById(@PathVariable("id") Long id) {
+    
+    @GetMapping("/reporte/sensor/{nombre_sensor}")
+    public ResponseEntity<List<Reporte>> getReportesbySensor(@PathVariable("nombre_sensor") String nombre_sensor) {
         try {
-            Reporte reporte = reporteRepository.findById(id).get();
+            List<Reporte> reportes = reporteRepository.findByNombreSensor(nombre_sensor);
+            if (reportes.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(reportes, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    
+    @GetMapping("/reporte/fecha/{fecha}")
+    public ResponseEntity<List<Reporte>> getReportesbyDate(@PathVariable("fecha") String fecha) {
+        try {
+            List<Reporte> reportes = reporteRepository.findByFecha(fecha);
+            if (reportes.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(reportes, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    
+    @GetMapping("/reporte/last")
+    public ResponseEntity<Reporte> getLastReporte() {
+        try {
+            Reporte reporte = reporteRepository.findTopByOrderByIdDesc();
             return new ResponseEntity<>(reporte, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

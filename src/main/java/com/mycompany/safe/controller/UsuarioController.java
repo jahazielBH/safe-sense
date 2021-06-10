@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -83,6 +84,12 @@ public class UsuarioController {
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+    
+    @PutMapping("/usuario")
+    public ResponseEntity<Usuario> updateUsuario(@RequestBody Usuario usuario) {
+        Usuario usr = usuarioRepository.save(usuario);
+        return new ResponseEntity<>(usr, HttpStatus.CREATED);
     }
 
     @PostMapping("/usuario/login")

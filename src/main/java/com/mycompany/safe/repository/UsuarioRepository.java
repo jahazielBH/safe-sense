@@ -9,7 +9,6 @@ package com.mycompany.safe.repository;
 
 
 import com.mycompany.safe.model.Usuario;
-import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

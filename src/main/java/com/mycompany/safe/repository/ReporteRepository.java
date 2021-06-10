@@ -6,6 +6,7 @@
 package com.mycompany.safe.repository;
 
 import com.mycompany.safe.model.Reporte;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -13,5 +14,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author gabhs
  */
 public interface ReporteRepository extends JpaRepository<Reporte, Long>{
-    
+    public Reporte findTopByOrderByIdDesc();
+    public List<Reporte> findByNombreSensor(String nombre_sensor);
+    public List<Reporte> findByFecha(String fecha);
 }
